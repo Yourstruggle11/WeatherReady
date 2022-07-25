@@ -14,13 +14,13 @@ import CustomCard from "../CustomCard";
 export default function TodayWeather() {
   return (
     <Swiper
-        className="h-[18rem]"
+        className="h-[18rem] mb-5"
         modules={[Navigation, Pagination,  A11y]}
         navigation
         pagination={{ clickable: true }}
-        spaceBetween={50}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        spaceBetween={20}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
         breakpoints={{
             0: {
             slidesPerView: 2,

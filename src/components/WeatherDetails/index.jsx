@@ -15,6 +15,10 @@ export default function WeatherDetails() {
 
           <TodayWeather  />
 
+          <div className='flex items-center justify-between w-full mb-5'>
+              <p className='text-3xl '>Today's Highlights</p>
+          </div>
+      
 
         </div>
     </>
