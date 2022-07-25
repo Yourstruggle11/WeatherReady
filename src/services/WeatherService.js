@@ -2,11 +2,11 @@ import axios from "axios";
 import config from "../config/index";
 
 async function getCityCoords(city) {
-  const response = await axios.get(`${config.WEATHER_API_ENDPOINT}q=${city}`);
+  const {data} = await axios.get(`${config.WEATHER_API_ENDPOINT}q=${city}`);
   const {
     coord,
     sys: { country },
-  } = response.data;
+  } = data;
   return { ...coord, country };
 }
 
@@ -22,10 +22,10 @@ async function getCityName(lon, lat) {
 }
 
 async function getWeather(lon, lat) {
-  const response = await axios.get(
+  const {data} = await axios.get(
     `${config.WEATHER_DATA_ENDPOINT}lon=${lon}&lat=${lat}`
   );
-  return response.data;
+  return data;
 }
 
 export { getCityCoords, getCityName };
