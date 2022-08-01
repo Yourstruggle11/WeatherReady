@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomWeekCards from '../CustomWeekCards'
-import weatherPng from "../../assets/cloudy-and-rainy-4245603-3527451.png"
+// import weatherPng from "../../assets/cloudy-and-rainy-4245603-3527451.png"
 import humidityPng from "../../assets/humidity-sensor-5108622-4285827.png"
 
 export default function ThisWeekWeather() {
