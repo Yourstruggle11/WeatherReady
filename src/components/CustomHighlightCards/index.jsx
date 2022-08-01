@@ -3,7 +3,7 @@ import React from "react";
 export default function CustomHighlightCards({ img,hText,measure }) {
   return (
     <>
-      <div className="flex justify-center max-w-[20rem] ml-2 mb-5 max-h-[15rem]">
+      <div className="flex justify-center max-w-[10rem] md:max-w-[20rem] ml-2 mb-5 max-h-[15rem]">
         <div className="rounded-lg shadow-lg bg-white">
         <h5 className="text-gray-900 text-center md:text-xl font-medium mb-2">
               {hText}
