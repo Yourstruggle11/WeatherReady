@@ -18,11 +18,11 @@ import Temperature from '../Temperature/Temperature';
         hour12: true,
         hour: "numeric",
         minute: "2-digit",
-        timeZone: weather.timezone,
+        timeZone: weather && weather.timezone,
       });
       const dayFormatter = Intl.DateTimeFormat([], {
         weekday: "long",
-        timeZone: weather.timezone,
+        timeZone: weather && weather.timezone,
       });
 
   return (
