@@ -1,4 +1,5 @@
 import React from 'react'
+import ThisWeekWeather from '../ThisWeekWeather';
 import TodayHighlightSection from '../TodayHighlightSection';
 import TodayWeather from "../TodayWeather";
 
@@ -14,19 +15,25 @@ export default function WeatherDetails() {
               </div>
           </div>
 
+
           <TodayWeather  />
 
+          {/* TODAY HIGHLIGHT SECTION START HERE */}
           <div className='flex items-center justify-between w-full mb-5'>
               <p className='text-3xl '>Today's Highlights</p>
           </div>
 
           <TodayHighlightSection />
 
+          {/* TODAY HIGHLIGHT SECTION END HERE */}
+
+
+
           <div className='flex items-center justify-between w-full mb-5'>
               <p className='text-3xl '>This Week</p>
           </div>
 
-
+          <ThisWeekWeather />
         </div>
     </>
 
