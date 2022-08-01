@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import weactherPic from "../../assets/cloud-3321877-2775240.png"
+import AppContext from '../../provider/appContext';
+import Temperature from '../Temperature/Temperature';
 
     function Weather() {
+      const {
+        app,
+        app: {weather}
+      } = useContext(AppContext);
+
+      console.log('====================================');
+      console.log(weather);
+      console.log('====================================');
+
+      const date = new Date(weather && weather.current.dt * 1000);
+      const formatter = Intl.DateTimeFormat([], {
+        hour12: true,
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: weather.timezone,
+      });
+      const dayFormatter = Intl.DateTimeFormat([], {
+        weekday: "long",
+        timeZone: weather.timezone,
+      });
+
   return (
     <>
         <div className='md:w-1/4 w-full md:fixed right-0 h-screen bg-white flex p-10 flex-col'> 
@@ -25,17 +48,17 @@ import weactherPic from "../../assets/cloud-3321877-2775240.png"
         </div>
         <div className=' max-h-40 mb-5'>
           <p className='text-8xl mb-2'>
-          16&deg;c
+          {weather && <Temperature temperature={weather.current.temp}/>} &deg;c
           </p>
-          <p className='text-1xl text-slate-700'>Feels like 16 °C</p>
-          <h1 className='text-2xl'>Heavy Intensity Rain</h1>
+          <p className='text-1xl text-slate-700'>Feels like {weather && <Temperature temperature={weather.current.feels_like}/>} °C</p>
+          <h1 className='text-2xl'>{weather && weather.current.weather[0].description}</h1>
         </div>
         <span className='bg-black block h-[0.5px] mb-5' />
-        <p className='text-3xl mb-5'>Monday, <span className='text-neutral-700	'>9:00 PM</span> </p>
+        <p className='text-3xl mb-5'>{dayFormatter.format(date)}, <span className='text-neutral-700	'>{formatter.format(date)}</span> </p>
         <p className='text-3xl flex items-center'>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-          </svg> India, IT
+          </svg> {app.city}, {app.country}
         </p>
         </div>
     </>
