@@ -2,18 +2,25 @@ import React from "react";
 import weactherPic from "../../assets/cloud-3321877-2775240.png";
 import Loader from "../Loader";
 import Temperature from "../Temperature/Temperature";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 import { WeatherLogic } from "./Weather.logic";
 
 function Weather() {
+  let time;
+  const dispatch = useDispatch();
   const { city, country, weather, unit } = useSelector(
     (state) => state.weather
   );
   const { GetCurrentLocationWeather } = WeatherLogic();
 
   if (!weather) {
-    return <Loader />;
+    return (
+      <div className="flex  flex-col w-full items-center justify-center h-screen">
+        <Loader />
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   const { current } = weather;
@@ -58,6 +65,13 @@ function Weather() {
               </svg>
             </div>
             <input
+                    onInput={(e) => {
+                      const value = e.target.value;
+                      clearTimeout(time);
+                      time = setTimeout(() => {
+                        dispatch({ type: "CITY", payload: value });
+                      }, 500);
+                    }}
               type="search"
               id="default-search"
               className="block outline-none focus:outline-none p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
