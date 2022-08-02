@@ -1,4 +1,14 @@
-export const weatherReducer =  (state, action) => {
+export const weatherReducer =  (state={
+    weather: null,
+    unit: "C",
+    city: "Kolkata",
+    country: "IN",
+    isDark: false,
+    geoCoords: {
+      lon: 88.3639,
+      lat: 22.5726,
+}
+}, action) => {
     const { type, payload } = action;
   
     switch (type) {

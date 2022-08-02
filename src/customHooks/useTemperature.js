@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import AppContext from "../provider/appContext";
+
+import {useSelector} from "react-redux"
 
 function useTemp(temp, toFixed = 0) {
+
   const {
-    app: { unit },
-  } = useContext(AppContext);
+    unit} = useSelector(state => state.weather);
 
   if (unit.toLowerCase() === "f") {
     return ((temp * 9) / 5 + 32).toFixed(toFixed);

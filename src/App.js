@@ -1,22 +1,23 @@
 import Home from "./page/home";
-import AppContext, { appReducer, initialAppState } from "./provider/appContext";
 import geoCoords from "./utils/getUserGeoCoords";
 import getWeather, {
   getCityCoords,
   getCityName,
 } from "./services/WeatherService";
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux"
 
 
 function App() {
-  const [app, dispatchApp] = useReducer(appReducer, initialAppState);
+  const dispatch = useDispatch();
+  const {city,geoCoords:geoCoordsState} = useSelector(state => state.weather);
 
 
 
   useEffect(() => {
     (async () => {
-      const data = await getWeather(app.geoCoords.lon, app.geoCoords.lat);
-      dispatchApp({ type: "WEATHER", payload: data });
+      const data = await getWeather(geoCoordsState.lon, geoCoordsState.lat);
+      dispatch({ type: "WEATHER", payload: data });
       const formatter = Intl.DateTimeFormat([], {
         hour12: false,
         hour: "numeric",
@@ -38,12 +39,12 @@ function App() {
           .replace(/[A-Za-z]/gi, "")
       );
       if (localTime > sunset || localTime < sunrise) {
-        dispatchApp({ type: "DARK", payload: true });
+        dispatch({ type: "DARK", payload: true });
       } else {
-        dispatchApp({ type: "DARK", payload: false });
+        dispatch({ type: "DARK", payload: false });
       }
     })();
-  }, [app.geoCoords.lat, app.geoCoords.lon]);
+  }, [geoCoordsState.lat, geoCoordsState.lon,dispatch]);
 
 
 
@@ -52,27 +53,25 @@ function App() {
       const { longitude: lon, latitude: lat } = await geoCoords();
       if (lon && lat) {
         const { name, country } = await getCityName(lon, lat);
-        dispatchApp({ type: "GEO_COORDS", payload: { lon, lat } });
-        dispatchApp({ type: "CITY", payload: name });
-        dispatchApp({ type: "COUNTRY", payload: country });
+        dispatch({ type: "GEO_COORDS", payload: { lon, lat } });
+        dispatch({ type: "CITY", payload: name });
+        dispatch({ type: "COUNTRY", payload: country });
       }
     })();
-  }, []);
+  }, [dispatch]);
 
 
   useEffect(() => {
     (async () => {
-      const { lon, lat, country } = await getCityCoords(app.city);
-      dispatchApp({ type: "GEO_COORDS", payload: { lon, lat } });
-      dispatchApp({ type: "COUNTRY", payload: country });
+      const { lon, lat, country } = await getCityCoords(city);
+      dispatch({ type: "GEO_COORDS", payload: { lon, lat } });
+      dispatch({ type: "COUNTRY", payload: country });
     })();
-  }, [app.city]);
+  }, [city,dispatch]);
 
 
   return(
-    <AppContext.Provider value={{ app, dispatchApp }}>
-      <Home />;
-    </AppContext.Provider>
+      <Home />
   ); 
 }
 
