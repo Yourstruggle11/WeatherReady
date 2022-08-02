@@ -1,28 +1,33 @@
 import React, { useContext } from 'react'
 import weactherPic from "../../assets/cloud-3321877-2775240.png"
 import AppContext from '../../provider/appContext';
+import Loader from '../Loader';
 import Temperature from '../Temperature/Temperature';
 
     function Weather() {
       const {
         app,
-        app: {weather}
+        app: {weather,unit}
       } = useContext(AppContext);
+
+      if (!weather) {
+        return <Loader />;
+      }
 
       console.log('====================================');
       console.log(weather);
       console.log('====================================');
-
-      const date = new Date(weather && weather.current.dt * 1000);
+      const { current } = weather;
+      const date = new Date(weather.current.dt * 1000);
       const formatter = Intl.DateTimeFormat([], {
         hour12: true,
         hour: "numeric",
         minute: "2-digit",
-        timeZone: weather && weather.timezone,
+        timeZone: weather.timezone,
       });
       const dayFormatter = Intl.DateTimeFormat([], {
         weekday: "long",
-        timeZone: weather && weather.timezone,
+        timeZone: weather.timezone,
       });
 
   return (
@@ -48,10 +53,10 @@ import Temperature from '../Temperature/Temperature';
         </div>
         <div className=' max-h-40 mb-5'>
           <p className='text-8xl mb-2'>
-          {weather && <Temperature temperature={weather.current.temp}/>} &deg;c
+          {<Temperature temperature={current.temp}/>} &deg;{unit}
           </p>
-          <p className='text-1xl text-slate-700'>Feels like {weather && <Temperature temperature={weather.current.feels_like}/>} °C</p>
-          <h1 className='text-2xl'>{weather && weather.current.weather[0].description}</h1>
+          <p className='text-1xl text-slate-700'>Feels like {<Temperature temperature={current.feels_like}/>} °{unit}</p>
+          <h1 className='text-2xl'>{current.weather[0].description}</h1>
         </div>
         <span className='bg-black block h-[0.5px] mb-5' />
         <p className='text-3xl mb-5'>{dayFormatter.format(date)}, <span className='text-neutral-700	'>{formatter.format(date)}</span> </p>
