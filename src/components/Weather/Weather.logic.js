@@ -6,11 +6,6 @@ import { useDispatch } from "react-redux";
 export const WeatherLogic = () => {
 
     const dispatch = useDispatch();
-
-
-
-
-
     const GetCurrentLocationWeather = async () => {
         const { longitude: lon, latitude: lat } = await geoCoords();
         if (lon && lat) {
