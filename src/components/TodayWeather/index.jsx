@@ -27,9 +27,6 @@ export default function TodayWeather() {
 
   const {hourly} = weather
 
-  console.log('====================================');
-  console.log(hourly);
-  console.log('====================================');
 
   return (
     <Swiper
