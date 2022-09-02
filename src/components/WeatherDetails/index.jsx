@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Footer';
 import ThisWeekWeather from '../ThisWeekWeather';
 import TodayHighlightSection from '../TodayHighlightSection';
 import TodayWeather from "../TodayWeather";
@@ -34,6 +35,8 @@ export default function WeatherDetails() {
           </div>
 
           <ThisWeekWeather />
+
+          <Footer />
         </div>
     </>
 
