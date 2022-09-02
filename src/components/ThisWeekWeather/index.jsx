@@ -1,24 +1,32 @@
 import React from 'react'
 import CustomWeekCards from '../CustomWeekCards'
-// import weatherPng from "../../assets/cloudy-and-rainy-4245603-3527451.png"
-import humidityPng from "../../assets/humidity-sensor-5108622-4285827.png"
+import { useSelector } from 'react-redux';
+import Loader from '../Loader';
 
 
 
 export default function ThisWeekWeather() {
+  const {weather,isDark} = useSelector(state => state.weather);
 
+
+  if (!weather) {
+    return <Loader />;
+  }
+  const { daily } = weather;
 
   return (
    <>
             <div className='w-full flex-wrap  py-10 flex items-center justify-between'>
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
-              <CustomWeekCards desc="Heavy Intensity Rain" weather="34 &deg;" hText='Humidity' img={humidityPng} />  
+              {daily.map((weather, index) =>{
+                        let date = new Date(weather.dt * 1000);
+                        const dayFormatter = Intl.DateTimeFormat([], {
+                          weekday: "long",
+                          timeZone: weather.timezone,
+                        });
+                return(
+                  <CustomWeekCards key={index} desc={weather.weather[0].description} minWeather={weather.temp.min} maxWeather={weather.temp.max} hText={dayFormatter.format(date)} img={`/weatherIcons/${weather.weather[0].icon}.png`} />
+                )
+              })}
             </div>
    </> 
   )
