@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CustomHighlightCards({ img,hText,measure,isSunsetDetailsAvailable }) {
+export default function CustomHighlightCards({ img,hText,measure,isSunsetDetailsAvailable,sunrise,sunset }) {
     return (
       <>
         {isSunsetDetailsAvailable ? (
@@ -10,16 +10,14 @@ export default function CustomHighlightCards({ img,hText,measure,isSunsetDetails
                 <div className="w-full h-1/2 flex items-center justify-center">
                   <img src="/weatherIcons/sunrise.png" className="mr-5" width={50} alt="" />
                   <div>
-                    {/* {formatter.format(new Date(current.sunrise * 1000))} */}
-                    5:59 AM<br/>
+                    {sunrise}<br/>
                     <span>Sunrise</span>
                   </div>
                 </div>
                 <div className="w-full h-1/2 flex items-center justify-center">
                   <img src="/weatherIcons/sunset.png" className="mr-5" width={50} alt="" />
                   <div>
-                    {/* {formatter.format(new Date(current.sunrise * 1000))} */}
-                    5:59 AM<br/>
+                    {sunset}<br/>
                     <span>Sunrise</span>
                   </div>
                 </div>
@@ -34,7 +32,7 @@ export default function CustomHighlightCards({ img,hText,measure,isSunsetDetails
                   {hText}
                 </h5>
                 <img
-                  className="rounded-t-lg h-1/2 w-full drop-shadow-2xl"
+                  className="rounded-t-lg h-1/2 w-screen drop-shadow-2xl"
                   src={img}
                   alt="weatherPng"
                 />

@@ -6,7 +6,8 @@ import CustomHighlightCards from '../CustomHighlightCards'
 import Loader from '../Loader';
 
 export default function TodayHighlightSection() {
-  const {weather} = useSelector(state => state.weather);
+  const {weather,isDark} = useSelector(state => state.weather);
+
 
   if (!weather) {
     return <Loader />;
@@ -21,12 +22,12 @@ export default function TodayHighlightSection() {
   return (
     <>
         <div className='w-full flex-wrap py-10 flex items-center justify-between'>
-            <CustomHighlightCards measure="89%" hText='Humidity' img={humidityPng} isSunsetDetailsAvailable={false} />
-            <CustomHighlightCards measure="89%" hText='Humidity' img={weatherPng}  isSunsetDetailsAvailable={false}/>
-            <CustomHighlightCards measure="45%" hText='Humidity' img={weatherPng}  isSunsetDetailsAvailable={true} />
-            <CustomHighlightCards measure="89%" hText='Humidity' img={weatherPng}  isSunsetDetailsAvailable={false}/>
-            <CustomHighlightCards measure="89%" hText='Humidity' img={weatherPng}  isSunsetDetailsAvailable={false}/>
-            <CustomHighlightCards measure="89%" hText='Humidity' img={weatherPng}  isSunsetDetailsAvailable={false}/>
+            <CustomHighlightCards measure={current.humidity+"%"} hText='Humidity' img={humidityPng} isSunsetDetailsAvailable={false} />
+            <CustomHighlightCards measure={current.wind_speed.toFixed(1) + "m/s"} hText='Wind Speed' img={`/weatherIcons/wind-${isDark ? "night" : "day"}.png`}  isSunsetDetailsAvailable={false}/>
+            <CustomHighlightCards sunrise={formatter.format(new Date(current.sunrise * 1000))} sunset={formatter.format(new Date(current.sunset * 1000))} isSunsetDetailsAvailable={true} />
+            <CustomHighlightCards measure={current.clouds + "%"} hText='Clouds' img={"/weatherIcons/clouds.png"}  isSunsetDetailsAvailable={false}/>
+            <CustomHighlightCards measure={current.uvi} hText='UV Index' img={"/weatherIcons/uv.png"}  isSunsetDetailsAvailable={false}/>
+            <CustomHighlightCards measure={current.pressure + " hPa"} hText='Pressure' img={"/weatherIcons/pressure.png"}  isSunsetDetailsAvailable={false}/>
         </div>
     </>
   )
