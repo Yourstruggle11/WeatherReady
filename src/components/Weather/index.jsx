@@ -105,7 +105,7 @@ function Weather() {
           </div>
         </div>
         <div className="max-h-60 flex items-center justify-center">
-          <img src={weactherPic} alt="weatherPic" className="drop-shadow-2xl" />
+          <img src={`/weatherIcons/${current.weather[0].icon}.png`} alt="weatherPic" className="drop-shadow-2xl" />
         </div>
         <div className=" max-h-40 mb-5">
           <p className="text-8xl mb-2">
