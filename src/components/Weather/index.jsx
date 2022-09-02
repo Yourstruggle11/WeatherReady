@@ -1,5 +1,4 @@
 import React from "react";
-import weactherPic from "../../assets/cloud-3321877-2775240.png";
 import Loader from "../Loader";
 import Temperature from "../Temperature/Temperature";
 import { useSelector,useDispatch } from "react-redux";
@@ -38,7 +37,7 @@ function Weather() {
 
   return (
     <>
-      <div className="md:w-1/4 w-full md:fixed right-0 h-screen bg-white flex p-10 flex-col">
+      <div className="md:w-1/4 w-full md:fixed right-0 h-screen bg-white flex p-10 flex-col dark:bg-slate-900 dark:text-white">
         <div className="w-full mb-10">
           <label
             htmlFor="default-search"
@@ -70,6 +69,11 @@ function Weather() {
                       clearTimeout(time);
                       time = setTimeout(() => {
                         dispatch({ type: "CITY", payload: value });
+                        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                          document.documentElement.classList.add('dark')
+                        } else {
+                          document.documentElement.classList.remove('dark')
+                        }
                       }, 500);
                     }}
               type="search"
@@ -111,7 +115,7 @@ function Weather() {
           <p className="text-8xl mb-2">
             {<Temperature temperature={current.temp} />} &deg;{unit}
           </p>
-          <p className="text-1xl text-slate-700">
+          <p className="text-1xl text-slate-700 dark:text-slate-400">
             Feels like {<Temperature temperature={current.feels_like} />} °
             {unit}
           </p>
@@ -120,7 +124,7 @@ function Weather() {
         <span className="bg-black block h-[0.5px] mb-5" />
         <p className="text-3xl mb-5">
           {dayFormatter.format(date)},{" "}
-          <span className="text-neutral-700	">{formatter.format(date)}</span>{" "}
+          <span className="text-neutral-700	dark:text-slate-400">{formatter.format(date)}</span>{" "}
         </p>
         <p className="text-3xl flex items-center">
           <svg

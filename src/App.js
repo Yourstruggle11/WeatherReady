@@ -40,8 +40,10 @@ function App() {
       );
       if (localTime > sunset || localTime < sunrise) {
         dispatch({ type: "DARK", payload: true });
+        localStorage.theme = 'dark'
       } else {
         dispatch({ type: "DARK", payload: false });
+        localStorage.theme = 'light'
       }
     })();
   }, [geoCoordsState.lat, geoCoordsState.lon,dispatch]);

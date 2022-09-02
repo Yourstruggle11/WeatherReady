@@ -6,7 +6,7 @@ import Loader from '../Loader';
 
 
 export default function ThisWeekWeather() {
-  const {weather,isDark} = useSelector(state => state.weather);
+  const {weather} = useSelector(state => state.weather);
 
 
   if (!weather) {
