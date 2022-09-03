@@ -1,6 +1,6 @@
 # Weather Ready
 
-<!-- <img src="" alt="WeatherReady" width="640" height="320" /> -->
+![WeatherReady](https://socialify.git.ci/Yourstruggle11/WeatherReady/image?description=1&font=Bitter&forks=1&issues=1&language=1&logo=https%3A%2F%2Fcdni.iconscout.com%2Fillustration%2Fpremium%2Fthumb%2Fwoman-holding-umbrella-4058546-3363891.png&owner=1&pattern=Overlapping%20Hexagons&pulls=1&stargazers=1&theme=Light)
 
 <hr>
 
