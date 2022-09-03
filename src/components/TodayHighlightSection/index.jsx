@@ -20,7 +20,7 @@ export default function TodayHighlightSection() {
   });
   return (
     <>
-        <div className='w-full flex-wrap py-10 flex items-center justify-between'>
+        <div className='w-full flex-wrap py-10 bg-[red] flex items-center justify-between'>
             <CustomHighlightCards measure={current.humidity+"%"} hText='Humidity' img={humidityPng} isSunsetDetailsAvailable={false} />
             <CustomHighlightCards measure={current.wind_speed.toFixed(1) + "m/s"} hText='Wind Speed' img={`/weatherIcons/wind-${isDark ? "night" : "day"}.png`}  isSunsetDetailsAvailable={false}/>
             <CustomHighlightCards sunrise={formatter.format(new Date(current.sunrise * 1000))} sunset={formatter.format(new Date(current.sunset * 1000))} isSunsetDetailsAvailable={true} />

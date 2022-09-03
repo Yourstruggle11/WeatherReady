@@ -10,7 +10,7 @@ export default function WeatherDetails() {
   const dispatch = useDispatch();
   return (
     <>
-        <div className='md:w-3/4 md:p-20 p-6 order-last md:order-first w-full h-full bg-[#f6f6f8] no-scrollbar dark:bg-slate-800 dark:text-white'> 
+        <div className='md:w-3/4 md:p-20 p-4 order-last md:order-first w-full h-full bg-[#f6f6f8] no-scrollbar dark:bg-slate-800 dark:text-white'> 
           <div className='flex items-center justify-between w-full mb-5'>
               <p className='text-3xl '>Today</p>
               <div className='flex'>
