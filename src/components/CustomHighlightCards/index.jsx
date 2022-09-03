@@ -26,7 +26,7 @@ export default function CustomHighlightCards({ img,hText,measure,isSunsetDetails
           </>
         ) : (
           <>
-            <div className="flex justify-center max-w-[10rem] md:max-w-[20rem] ml-2 mb-5 max-h-[15rem] ">
+            <div className="flex justify-center w-[10rem] md:w-[20rem] ml-2 mb-5 h-[15rem] ">
               <div className="rounded-3xl	 shadow-lg bg-white dark:bg-slate-900 dark:text-white">
                 <h5 className="text-gray-900 text-center md:text-xl font-medium mb-2 dark:text-gray-300">
                   {hText}
