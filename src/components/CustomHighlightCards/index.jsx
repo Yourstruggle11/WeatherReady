@@ -18,7 +18,7 @@ export default function CustomHighlightCards({ img,hText,measure,isSunsetDetails
                   <img src="/weatherIcons/sunset.png" className="mr-5" width={50} alt="" />
                   <div>
                     {sunset}<br/>
-                    <span>Sunrise</span>
+                    <span>Sunset</span>
                   </div>
                 </div>
               </div>

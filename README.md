@@ -12,7 +12,9 @@
 
 # Preview
 
-<h1><a src="https://weatherready.netlify.app/" target="_blank">SITE IS LIFE HERE</a> </h1>
+# [SITE IS LIVE HERE](https://weatherready.netlify.app/ "WeatherReady") 
+
+
 
 <img src="./src/assets/demo_one.jpeg">
 <br />
@@ -42,7 +44,9 @@ npm start
 
 ## For this application I have used OpenWeatherMap API (It's free)
 
-go to <a src="https://home.openweathermap.org/api_keys" target="_blank">HERE</a> to get your API KEY
+go to [HERE](https://home.openweathermap.org/api_keys "OpenWeather") to get your API KEY
+
+
 
 ## Once you have created your API key then follow these steps
 
