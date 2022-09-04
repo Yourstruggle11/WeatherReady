@@ -6,7 +6,7 @@ import TodayHighlightSection from '../TodayHighlightSection';
 import TodayWeather from "../TodayWeather";
 
 export default function WeatherDetails() {
-  const [unit,setUnit] = React.useState(true);
+  const [unit,setUnit] = React.useState('C');
   const dispatch = useDispatch();
   return (
     <>
@@ -17,15 +17,15 @@ export default function WeatherDetails() {
                 <span
                   onClick={() => {
                     dispatch({ type: "UNIT", payload: "C" });
-                    setUnit(!unit); 
+                    setUnit('C'); 
                   }}
-                className={unit ? 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-black text-white mr-5 flex items-center justify-center' : 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-white text-black mr-5 flex items-center justify-center'} >&deg; C</span>
+                className={unit === 'C'? 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-black text-white mr-5 flex items-center justify-center' : 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-white text-black mr-5 flex items-center justify-center'} >&deg; C</span>
                 <span
                   onClick={() => {
                     dispatch({ type: "UNIT", payload: "F" });
-                    setUnit(!unit); 
+                    setUnit('F'); 
                   }}
-                  className={!unit ? 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-black text-white mr-5 flex items-center justify-center' : 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-white text-black mr-5 flex items-center justify-center'}>&deg;F</span>
+                  className={unit === 'F' ? 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-black text-white mr-5 flex items-center justify-center' : 'w-10 h-10  block font-bold cursor-pointer rounded-full bg-white text-black mr-5 flex items-center justify-center'}>&deg;F</span>
               </div>
           </div>
 
