@@ -12,8 +12,7 @@
 
 # Preview
 
-# [SITE IS LIVE HERE](https://weatherready.netlify.app/ "WeatherReady") 
-
+<h1><a src="https://weatherready.netlify.app/" target="_blank">SITE IS LIVE HERE</a> </h1>
 
 
 <img src="./src/assets/demo_one.jpeg">
