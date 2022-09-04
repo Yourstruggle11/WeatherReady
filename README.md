@@ -12,7 +12,7 @@
 
 # Preview
 
-<h1><a src="https://weatherready.netlify.app/" target="_blank">SITE IS LIFE HERE</a> </h1>
+<h1><a src="https://weatherready.netlify.app/" target="_blank">SITE IS LIVE HERE</a> </h1>
 
 <img src="./src/assets/demo_one.jpeg">
 <br />
